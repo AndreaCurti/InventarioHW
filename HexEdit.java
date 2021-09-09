@@ -24,11 +24,26 @@ public class HexEdit{
 							System.out.printf("%04d | ", i*0xA);
 							for(int j = start; j < valori; j++){
 								if(text[j] < 16){
-									end = "0"+Integer.toHexString(text[j]);
+									int val = text[j];
+									val = val << 28;
+									val = val >>> 28;
+									end = "0"+Integer.toHexString(val);
 								}else{
-									end = Integer.toHexString(text[j]);
+									int val = text[j];
+									val = val << 24;
+									val = val >>> 24;
+									end = Integer.toHexString(val);
 								}
 								System.out.printf("%s ", end);
+								if(j == valori -1){
+									System.out.print(" | ");
+									for(int k = start; k < valori; k++){
+										int val = text[k];
+										val = val << 24;
+										val = val >>> 24;
+										System.out.print(Integer.toHexString(val)+" . ");
+									}
+								}
 							}
 							System.out.println("");
 							start = valori;
