@@ -6,7 +6,6 @@
 		$email = $_POST["email"];
 		$hashUser->doHash($email);
 		$hashedPass = $hashUser->getHashed();
-		echo $hashedPass;
 		$sql = "SELECT * FROM utente WHERE email='$email' && password='$hashedPass'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
@@ -21,4 +20,3 @@
 		require("../Views/login.php");
 	}
 ?>
-</body>
