@@ -1,10 +1,10 @@
 <head>
-	<title>Login</title>
+	<title>AddUser</title>
 
 	<!-- come titolo usare il nome del file-->
 	<!-- quale browser uso?-->
 	<!-- quale sistema operativo usato?-->
-	<!-- data creazipone: 17.11.2020 ; data ultima modifica: 17.11.2020-->
+	<!-- data creazipone: 21.10.2021 ; data ultima modifica: 28.10.2021-->
 
 	<meta charset="UTF-8">
   	<meta name="description" content="Gestione inventario hardware CPT Trevano">
@@ -29,16 +29,32 @@
 	</style>
 </head>
 <body>
-	<h1>Login</h1>
+	<h1>Aggiungi utente</h1>
 	<div>
-		<form action="#" method="POST">
+		<form action="<?php echo URL ?>addUser/registerUser" method="POST">
 			<table>
+				<tr>
+					<td>
+						<label>Nome:</label>
+					</td>
+					<td>
+						<input type="text" name="nome" autocomplete="off">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Cognome: </label>
+					</td>
+					<td>
+						<input type="text" name="cognome" autocomplete="off">
+					</td>
+				</tr>
 				<tr>
 					<td>
 						<label>Email:</label>
 					</td>
 					<td>
-						<input type="text" name="email">
+						<input type="text" name="email" autocomplete="off">
 					</td>
 				</tr>
 				<tr>
@@ -49,10 +65,27 @@
 						<input type="password" name="password">
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<label>Conferma password: </label>
+					</td>
+					<td>
+						<input type="password" name="confPassword"><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Admin: </label>
+					</td>
+					<td>
+						<input type="checkbox" name="isAdmin"><br>
+					</td>
+				</tr>
 			</table>
-			<input type="submit">
+			<br><input type="submit">
 		</form>
-		<h2 style="color: red" id="errorLogin"></h2>
+		<h3 style="color: red" id="errorAddUser"></h3>
 	</div>
 	
 </body>
+

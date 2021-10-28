@@ -1,10 +1,10 @@
 <head>
-	<title>Register</title>
+	<title>DeleteUser</title>
 
 	<!-- come titolo usare il nome del file-->
 	<!-- quale browser uso?-->
 	<!-- quale sistema operativo usato?-->
-	<!-- data creazipone: 17.11.2020 ; data ultima modifica: 17.11.2020-->
+	<!-- data creazipone: 28.10.2021 ; data ultima modifica: 28.10.2021-->
 
 	<meta charset="UTF-8">
   	<meta name="description" content="Gestione inventario hardware CPT Trevano">
@@ -29,26 +29,10 @@
 	</style>
 </head>
 <body>
-	<h1>Register</h1>
+	<h1>Rimuovi utente</h1>
 	<div>
-		<form action="#" method="POST">
+		<form action="<?php echo URL ?>deleteUser/delete" method="POST">
 			<table>
-				<tr>
-					<td>
-						<label>Nome:</label>
-					</td>
-					<td>
-						<input type="text" name="nome" autocomplete="off">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Cognome: </label>
-					</td>
-					<td>
-						<input type="text" name="cognome" autocomplete="off">
-					</td>
-				</tr>
 				<tr>
 					<td>
 						<label>Email:</label>
@@ -58,33 +42,16 @@
 					</td>
 				</tr>
 				<tr>
-					<td>
-						<label>Password: </label>
+				<td>
+						<label>Conferma email:</label>
 					</td>
 					<td>
-						<input type="password" name="password">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Conferma password: </label>
-					</td>
-					<td>
-						<input type="password" name="confPassword"><br>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Admin: </label>
-					</td>
-					<td>
-						<input type="checkbox" name="isAdmin"><br>
+						<input type="text" name="confEmail" autocomplete="off">
 					</td>
 				</tr>
 			</table>
-			<br><input type="submit">
+			<input type="submit">
 		</form>
-		<h3 style="color: red" id="errorRegister"></h3>
+		<h2 style="color: red" id="errorDeleteUser"></h2>
 	</div>
-	
 </body>

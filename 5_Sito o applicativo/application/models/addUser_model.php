@@ -1,18 +1,18 @@
 <?php
 	/**
-	 * classe per lo user
+	 * classe per aggiungere un utente
 	 */
-	class User
+	class AddUserClass
 	{
 		private $name;
 		private $surname;
 		private $email;
 		private $password;
-		private $confPassword;
+		private $confPass;
 		private $hashedPassword;
 		private $isAdmin;
 
-		function __construct($name, $surname, $email, $password, $confPass, $isAdmin)
+		public function __construct($name, $surname, $email, $password, $confPass, $isAdmin)
 		{
 			$this->name = $name;
 			$this->surname = $surname; 
@@ -22,23 +22,23 @@
 			$this->isAdmin = $isAdmin;
 		}
 
-		function getHashedPass(){
-			require('hash.php');
+		public function getHashedPass(){
+			require 'application/libs/hash.php';
 			$hashUser = new Hash($this->password);
 			$hashUser->doHash($this->email);
 			$this->hashedPassword = $hashUser->getHashed();
 		}
 
-		function createUser(){
-			require('connection.php');
-			require('email.php');
-			require('password.php');
+		public function createUser(){
+			require 'application/libs/connection.php';
+			require 'application/libs/Register/email.php';
+			require 'application/libs/Register/password.php';
 			$emailUser = new Email($this->email);
 			if($emailUser->isValid()){
 				$passUser = new Password($this->password);
 				if($passUser->isValid()){
 					if($this->password == $this->confPass){
-						User::getHashedPass();
+						$this->getHashedPass();
 						$sql = "SELECT * FROM utente WHERE email='$this->email'";
 						$result = $conn->query($sql);
 						if ($result->num_rows == 0) {
