@@ -10,9 +10,23 @@ class View
         if($noInclude){
             require "application/views/" . $name;
         }else{
-            require 'application/views/header.php';
-            require "application/views/" . $name;
-            require 'application/views/footer.php';
+            //var_dump($_SESSION);
+            if(!empty($_SESSION['id'])){
+                if($_SESSION['isAdmin'] == 0){
+                    require 'application/views/headerBase.php';
+                    require "application/views/" . $name;
+                    require 'application/views/footer.php';
+                }else if($_SESSION['isAdmin'] == 1){
+                    require 'application/views/headerAdmin.php';
+                    require "application/views/" . $name;
+                    require 'application/views/footer.php';
+                }
+            }else{
+                require 'application/views/headerLogin.php';
+                require "application/views/" . $name;
+                require 'application/views/footer.php';
+            }
+            
         }
     }
 }

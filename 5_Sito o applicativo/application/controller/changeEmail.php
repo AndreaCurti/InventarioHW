@@ -1,13 +1,20 @@
 <?php
-
 class ChangeEmail extends Controller
 {
   public function index(){
-    $this->view->render('changeEmail/index.php');
+    if(!empty($_SESSION['id'])){
+      if($_SESSION['isAdmin'] == 1){
+        $this->view->render('ChangeEmail/index.php');
+      }else{
+        $this->view->render('Home/index.php');
+      }
+    }else{
+      $this->view->render('Login/index.php');
+    }
   }
 
   public function change(){
-    require 'application/models/changeEmail_model.php';
+    require_once 'application/models/changeEmail_model.php';
     try{
       if($_SERVER["REQUEST_METHOD"] == "POST"){
         $user = new ChangeEmailClass($_POST["oldEmail"], 

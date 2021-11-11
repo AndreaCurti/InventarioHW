@@ -3,11 +3,19 @@
 class DeleteUser extends Controller
 {
   public function index(){
-    $this->view->render('deleteUser/index.php');
+    if(!empty($_SESSION['id'])){
+      if($_SESSION['isAdmin'] == 1){
+        $this->view->render('deleteUser/index.php');
+      }else{
+        $this->view->render('Home/index.php');
+      }
+    }else{
+      $this->view->render('Login/index.php');
+    }
   }
 
   public function delete(){
-    require 'application/models/deleteUser_model.php';
+    require_once 'application/models/deleteUser_model.php';
     try{
       if($_SERVER["REQUEST_METHOD"] == "POST"){
         $user = new DeleteUserClass($_POST["email"], 

@@ -26,9 +26,13 @@
             $this->getHashedPass();
             $sql = "SELECT * FROM utente WHERE email='$this->email' && password='$this->hashedPassword'";
             $result = $conn->query($sql);
+			$row = $result->fetch_assoc();
             if ($result->num_rows > 0) {
-            echo "Sei loggato";
+				$_SESSION['id'] = $row['id'];
+				$_SESSION['isAdmin'] = $row['is_admin'];
+				return true;
             }else{ 
+				session_destroy();
                 throw new Exception("Email o password non valida");
             }                
 		}

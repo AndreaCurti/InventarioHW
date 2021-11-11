@@ -1,8 +1,8 @@
 <?php
-
 class Login extends Controller
 {
     public function index(){
+      session_unset();
       $this->view->render('login/index.php');
     }
 
@@ -12,7 +12,9 @@ class Login extends Controller
         if($_SERVER["REQUEST_METHOD"] == "POST"){
           $user = new LoginClass($_POST["email"], 
                 $_POST["password"]);
-          $user->doLogin();
+          if($user->doLogin()){
+            $this->view->render('login/success.php');
+          }
         }else{ 
           throw new Exception("Email o password non valida");
         }

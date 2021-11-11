@@ -14,12 +14,17 @@
 
 		public function __construct($name, $surname, $email, $password, $confPass, $isAdmin)
 		{
-			$this->name = $name;
-			$this->surname = $surname; 
-			$this->email = $email;
-			$this->password = $password; 
-			$this->confPass = $confPass;
-			$this->isAdmin = $isAdmin;
+			if(!empty($name) && !empty($surname) && !empty($email) 
+			  && !empty($password) && !empty($confPass) && !empty($isAdmin)){
+				$this->name = $name;
+				$this->surname = $surname; 
+				$this->email = $email;
+				$this->password = $password; 
+				$this->confPass = $confPass;
+				$this->isAdmin = $isAdmin;
+			}else{
+				throw new Exception("Completare correttamente tutti i campi");
+			}
 		}
 
 		public function getHashedPass(){
