@@ -46,7 +46,7 @@
                     $this->hashedPass = $this->getHashedPass($this->newEmail);
                     $sql = "UPDATE utente SET email='$this->newEmail', password='$this->hashedPass' WHERE email='$this->oldEmail'";
                     $conn->query($sql);
-                    echo "utente modificato";
+                    return true;
                 }else{
                     throw new Exception("Email o password errata");
                 }

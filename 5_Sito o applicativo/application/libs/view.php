@@ -6,11 +6,16 @@ class View
 
     }
 
+    /**
+     * Descrizione
+     * 
+     * @param String $name -> la path della view da caricare
+     * @param Boolean $noInclude -> se includere o meno l'header e footer
+     */
     public function render($name, $noInclude = false){
         if($noInclude){
             require "application/views/" . $name;
         }else{
-            //var_dump($_SESSION);
             if(!empty($_SESSION['id'])){
                 if($_SESSION['isAdmin'] == 0){
                     require 'application/views/headerBase.php';

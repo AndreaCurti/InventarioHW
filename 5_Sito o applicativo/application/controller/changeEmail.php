@@ -20,6 +20,7 @@ class ChangeEmail extends Controller
         $user = new ChangeEmailClass($_POST["oldEmail"], 
         $_POST["newEmail"], $_POST["confEmail"], $_POST["confPass"]);
         $user->changeEmail();
+        $this->view->render('Home/index.php');
       }
     }catch(Exception $e){ 
       $this->index(); ?>

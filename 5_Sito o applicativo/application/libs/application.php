@@ -29,10 +29,16 @@ class Application
                 $this->url_controller->index();
             }
         } else {
-            require './application/controller/home.php';
-            $home = new Home();
-            $home->index();
-        }
+            if(empty($_SESSION)){
+                require './application/controller/login.php';
+                $login = new Login();
+                $login->index();
+            }else{
+                require './application/controller/home.php';
+                $home = new Home();
+                $home->index();
+            }
+        }     
     }
 
     /**

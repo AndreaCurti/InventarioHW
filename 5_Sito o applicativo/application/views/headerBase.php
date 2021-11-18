@@ -7,6 +7,7 @@
     </head>
     <body>
         <div id="header">            
-            <a style="margin-right: 20px" href="<?php echo URL; ?>Login/index">Login</a>
+            <a style="margin-right: 20px" href="<?php echo URL; ?>Home/index">Home</a>   
+            <a style="margin-right: 20px" href="<?php echo URL; ?>Login/index">Logout</a>
         </div>
         <div id="content">

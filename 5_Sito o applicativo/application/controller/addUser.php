@@ -2,6 +2,10 @@
 //session_start();
 class addUser extends Controller
 {
+    /**
+     * Descrizione
+     * 
+     */
     public function index(){
         if(!empty($_SESSION['id'])){
             if($_SESSION['isAdmin'] == 1){

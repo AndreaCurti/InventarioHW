@@ -21,6 +21,7 @@ descrizione VARCHAR(255));
 CREATE TABLE componente(
 id INT PRIMARY KEY AUTO_INCREMENT,
 marca VARCHAR(255),
+descrizione VARCHAR(255),
 numero_seriale VARCHAR(255),
 data_installazione DATE,
 utente_id INT,
@@ -33,3 +34,18 @@ FOREIGN KEY (aula_id) REFERENCES aula(id));
 INSERT INTO utente(nome, cognome, email, password, is_admin) 
 VALUES('Andrea','Curti','andrea.curti@samtrevano.ch', 
 'f526440862c83b4fbe550f700e1cd11f38a09b1dabf62401f6491e04b3c76460', TRUE);
+
+INSERT INTO tipo(nome, descrizione) 
+VALUES('Computer','PC and Mac');
+
+INSERT INTO tipo(nome, descrizione) 
+VALUES('Tastiera','Tastiere per Windows e Mac');
+
+INSERT INTO tipo(nome, descrizione) 
+VALUES('Mouse','Mouse per Windows e Mac');
+
+INSERT INTO tipo(nome, descrizione) 
+VALUES('Monitor','Monitor di varie marche');
+
+INSERT INTO tipo(nome, descrizione) 
+VALUES('Proiettore','Proiettore DLP o LCD');
