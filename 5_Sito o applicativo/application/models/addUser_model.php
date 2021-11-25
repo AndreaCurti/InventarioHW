@@ -15,7 +15,7 @@
 		public function __construct($name, $surname, $email, $password, $confPass, $isAdmin)
 		{
 			if(!empty($name) && !empty($surname) && !empty($email) 
-			  && !empty($password) && !empty($confPass) && !empty($isAdmin)){
+			  && !empty($password) && !empty($confPass)){
 				$this->name = $name;
 				$this->surname = $surname; 
 				$this->email = $email;
@@ -47,7 +47,7 @@
 						$sql = "SELECT * FROM utente WHERE email='$this->email'";
 						$result = $conn->query($sql);
 						if ($result->num_rows == 0) {
-							$sql = "INSERT INTO utente(nome, cognome, email, password, is_admin) VALUES('$this->name','$this->surname','$this->email', '$this->hashedPassword', $this->isAdmin)";
+							$sql = "INSERT INTO utente(nome, cognome, email, password, is_admin, is_enable) VALUES('$this->name','$this->surname','$this->email', '$this->hashedPassword', $this->isAdmin, TRUE)";
 							$conn->query($sql);
 						}else{
 							throw new Exception("Utente già esistente");

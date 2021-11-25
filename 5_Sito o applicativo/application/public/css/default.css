@@ -33,7 +33,7 @@ body{
 }
 
 .vertical-menu {
-    width: 200px;
+    width: 140px;
   }
 
 .vertical-menu a {
@@ -54,3 +54,11 @@ body{
     color: white;
   }
 
+.grey{
+  background-color: lightgrey;
+}
+
+.components, .components tr, .components td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}

@@ -30,7 +30,9 @@
                 $sql = "SELECT * FROM utente WHERE email='$this->email'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
-                    echo "Utente eliminato";
+                    $sql = "UPDATE utente SET is_enable = FALSE WHERE email='$this->email'";
+                    $conn->query($sql);
+                    return true;
                 }else{ 
                     throw new Exception("Utente non esistente");
                 }
