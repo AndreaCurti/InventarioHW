@@ -13,7 +13,7 @@ class Login extends Controller
         $user = new LoginClass($_POST["email"], 
               $_POST["password"]);
         if($user->doLogin()){
-          $this->view->render('login/success.php');
+          $this->view->render('home/index.php');
         }
       }else{ 
         throw new Exception("Email o password non valida");
