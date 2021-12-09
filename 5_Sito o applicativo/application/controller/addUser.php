@@ -1,14 +1,16 @@
 <?php
-//session_start();
 class addUser extends Controller
 {
     /**
-     * Descrizione
+     * Questo metodo serve per caricare la pagina per l'aggiunta di un utente.
+     * Viene controllato se l'utente è loggato ed ha i permessi.
      * 
+     * @param String $message -> il messaggio di errore da stampare, default = ""
      */
-    public function index(){
+    public function index($message = ""){
         if(!empty($_SESSION['id'])){
             if($_SESSION['isAdmin'] == 1){
+                $this->view->errorMessage = $message;
                 $this->view->render('addUser/index.php');
             }else{
                 $this->view->render('Home/index.php');
@@ -18,6 +20,11 @@ class addUser extends Controller
         }
     }
 
+    /**
+     * Questo metodo viene invocato con il bottone.
+     * Viene controllato se i campi inseriti sono corretti, ed in caso
+     * positivo, aggiunge un nuovo utente.
+     */
     public function registerUser(){
         require_once 'application/models/addUser_model.php';
         try{
@@ -27,10 +34,7 @@ class addUser extends Controller
                     isset($_POST["isAdmin"]) ? 1 : 0);
             $user->createUser();
         }catch(Exception $e){ 
-            $this->index(); ?>
-            <script>
-               document.getElementById("errorAddUser").innerHTML = "<?php echo $e->getMessage()?>";
-            </script>
-        <?php }
+            $this->index($e->getMessage());
+        }
     }
 }

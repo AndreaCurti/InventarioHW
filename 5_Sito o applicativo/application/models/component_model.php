@@ -37,14 +37,13 @@
 		function modifyDescAndAula($desc, $aula){
 			require 'application/libs/connection.php';
 			$aula = intval($aula);
-			if($this->checkAula($aula)){
-				$sql = "UPDATE componente SET descrizione='$desc', aula_id=$aula WHERE id = $this->id";
-				$result = $conn->query($sql);
-				if ($result) {
-					echo "rttttt";
-					return TRUE;
-				}
-				echo "hhhh";
+			if(!$this->checkAula($aula)){
+				$a = 1;
+			}
+			$sql = "UPDATE componente SET descrizione='$desc', aula_id=$aula WHERE id = $this->id";
+			$result = $conn->query($sql);
+			if ($result) {
+				return TRUE;
 			}
 			return FALSE;
 		}

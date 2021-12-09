@@ -2,9 +2,17 @@
 
 class DeleteUser extends Controller
 {
-  public function index(){
+  /**
+   * Questo metodo serve per caricare la pagina per 
+   * l'eliminazione di un utente.
+   * Viene controllato se l'utente è loggato ed ha i permessi.
+   * 
+   * @param String $message -> il messaggio di errore da stampare, default = ""
+   */
+  public function index($message = ""){
     if(!empty($_SESSION['id'])){
       if($_SESSION['isAdmin'] == 1){
+        $this->view->errorMessage = $message;
         $this->view->render('deleteUser/index.php');
       }else{
         $this->view->render('Home/index.php');
@@ -14,6 +22,10 @@ class DeleteUser extends Controller
     }
   }
 
+  /**
+   * Questo metodo viene invocato una volta premuto il bottone.
+   * Se tutti i controlli vanno a buon fine, l'utente viene eliminato.
+   */
   public function delete(){
     require_once 'application/models/deleteUser_model.php';
     try{
@@ -25,10 +37,7 @@ class DeleteUser extends Controller
         }
       }
     }catch(Exception $e){ 
-      $this->index(); ?>
-      <script>
-          document.getElementById("errorDeleteUser").innerHTML = "<?php echo $e->getMessage()?>";
-      </script>
-    <?php }
+      $this->index($e->getMessage());
+    }
   }
 }

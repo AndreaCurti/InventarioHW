@@ -1,8 +1,9 @@
 <?php
 class Login extends Controller
 {
-  public function index(){
+  public function index($message = ""){
     session_unset();
+    $this->view->errorMessage = $message;
     $this->view->render('login/index.php');
   }
 
@@ -19,10 +20,7 @@ class Login extends Controller
         throw new Exception("Email o password non valida");
       }
     }catch(Exception $e){ 
-      $this->index(); ?>
-      <script>
-          document.getElementById("errorLogin").innerHTML = "<?php echo $e->getMessage()?>";
-      </script>
-<?php }
+      $this->index($e->getMessage());
+    }
   }
 }
