@@ -44,9 +44,12 @@
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     $this->hashedPass = $this->getHashedPass($this->newEmail);
-                    $sql = "UPDATE utente SET email='$this->newEmail', password='$this->hashedPass' WHERE email='$this->oldEmail'";
+                    $sql = "UPDATE utente SET email='$this->newEmail', password='$this->hashedPass' WHERE email='$this->oldEmail' AND is_enable=1";
                     $conn->query($sql);
-                    return true;
+                    if(mysqli_affected_rows($conn) > 0 ){
+                        return TRUE;
+                    }
+                    throw new Exception("Utente non trovato");
                 }else{
                     throw new Exception("Email o password errata");
                 }

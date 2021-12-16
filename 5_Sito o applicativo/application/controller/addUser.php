@@ -1,5 +1,5 @@
 <?php
-class addUser extends Controller
+class AddUser extends Controller
 {
     /**
      * Questo metodo serve per caricare la pagina per l'aggiunta di un utente.
@@ -32,7 +32,9 @@ class addUser extends Controller
                     $_POST["cognome"], $_POST["email"], 
                     $_POST["password"], $_POST["confPassword"], 
                     isset($_POST["isAdmin"]) ? 1 : 0);
-            $user->createUser();
+            if($user->createUser()){
+                $this->view->render('Home/index.php');
+            }            
         }catch(Exception $e){ 
             $this->index($e->getMessage());
         }

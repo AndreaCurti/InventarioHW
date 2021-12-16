@@ -20,7 +20,6 @@ class ModifyComponent extends Controller
 
   public function changeComponent($id){
     require_once 'application/models/component_model.php';
-    
     if($_SERVER["REQUEST_METHOD"] == "POST"){
       $component = new Component($id);
       if($component->modifyDescAndAula($_POST["descrizione"], $_POST["aula"])){

@@ -24,7 +24,7 @@
 		function doLogin(){
 			require 'application/libs/connection.php';
             $this->getHashedPass();
-            $sql = "SELECT * FROM utente WHERE email='$this->email' && password='$this->hashedPassword'";
+            $sql = "SELECT * FROM utente WHERE email='$this->email' AND password='$this->hashedPassword' AND is_enable=1";
             $result = $conn->query($sql);
 			$row = $result->fetch_assoc();
             if ($result->num_rows > 0) {

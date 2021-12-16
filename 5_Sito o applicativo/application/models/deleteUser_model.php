@@ -30,7 +30,7 @@
                 $sql = "SELECT * FROM utente WHERE email='$this->email'";
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
-                    $sql = "UPDATE utente SET is_enable = FALSE WHERE email='$this->email'";
+                    $sql = "UPDATE utente SET is_enable = FALSE WHERE email='$this->email' AND is_enable=1";
                     $conn->query($sql);
                     return true;
                 }else{ 

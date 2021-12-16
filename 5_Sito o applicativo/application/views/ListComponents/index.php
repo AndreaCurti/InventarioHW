@@ -47,7 +47,7 @@
                                     <?php foreach($component as $field){ ?>
                                         <td style="padding: 5px; text-align: center;"><?php echo $field; ?></td>
                                     <?php } ?>
-                                    <?php if($_SESSION["idCategoria"] != 6){ ?>
+                                    <?php if($_SESSION["idCategoria"] != 6){  ?>
                                         <td>
                                             <form action="<?php echo URL ?>modifyComponent/index/<?php echo $component["id"] ?>" method="POST">
                                                 <input type="submit" value="Modifica" class="btn btn-dark" style="display: inline-block;">
@@ -55,7 +55,7 @@
                                         </td>
                                         <td>
                                             <form action="<?php echo URL ?>listComponents/askConfirm/<?php echo $component["id"] 
-                                            . '/'. $this->idCategoria ?>" method="POST">
+                                            . '/'. $_SESSION["idCategoria"] ?>" method="POST">
                                                 <input type="submit" value="Elimina" class="btn btn-dark" style="display: inline-block;">
                                             </form>
                                         </td>
@@ -70,7 +70,9 @@
             <?php } ?>
         </td>
         <td class="align-top pt-2">
-            <button class="btn btn-dark mt-1 ml-2"><i class="bi bi-plus-lg"></i></button>
+            <form action="<?php echo URL ?>addComponent/index" method="POST">
+                <button class="btn btn-dark mt-1 ml-2"><i class="bi bi-plus-lg"></i></button>
+            </form>
         </td>
     </tr>
 </table>

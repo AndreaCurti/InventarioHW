@@ -50,6 +50,7 @@
 							$sql = "INSERT INTO utente(nome, cognome, email, password, is_admin, is_enable) 
 							VALUES('$this->name','$this->surname','$this->email', '$this->hashedPassword', $this->isAdmin, TRUE)";
 							$conn->query($sql);
+							return TRUE;
 						}else{
 							throw new Exception("Utente già esistente");
 						}

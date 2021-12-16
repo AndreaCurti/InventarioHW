@@ -28,11 +28,10 @@ class ListComponents extends Controller
    * @param Int $categoria -> la categoria del componente, default = 0
    */
   public function listAll($categoria){
-    require_once 'application/models/listComponents_model.php';
-    $components = new ListComponentsClass($categoria);
+    require_once 'application/models/component_model.php';
     try{
       $_SESSION['emptyList'] = 0;
-      return $components->getComponents();
+      return Component::getComponents($categoria);
     }catch(Exception $e){ 
       $_SESSION['emptyList'] = 1; 
       $this->view->errorMessage = "Nessun elemento presente in questa categoria";
