@@ -32,7 +32,8 @@ body{
 
 #footer{
     color: white;
-    padding: 20px;
+    padding: 30px;
+    text-align: center;
 }
 
 .vertical-menu {

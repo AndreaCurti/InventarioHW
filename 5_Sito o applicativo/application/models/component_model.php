@@ -99,7 +99,7 @@
 					if ($result) {
 						return TRUE;
 					}
-					throw new Exception("Bruh");
+					throw new Exception("Aula non esistente");
 				}else{
 					throw new Exception("Aula non esistente");
 				}

@@ -50,7 +50,7 @@
                     if(mysqli_affected_rows($conn) > 0 ){
                         return TRUE;
                     }
-                    throw new Exception("Utente non trovato");
+                    throw new Exception("La nuova password deve essere diversa da quella vecchia");
                 }else{
                     throw new Exception("Email o password errata");
                 }

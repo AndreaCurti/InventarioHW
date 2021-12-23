@@ -1,13 +1,17 @@
 <?php
 /**
- * controller per la home
+ * questo metodo carica la pagina home
  */
 class Home extends Controller
 {
   public function index(){
-	  $this->view->render("Home/index.php");
+	$this->view->render("Home/index.php");
   }
 
+  /**
+  * Questo metodo carica, in base al bottone cliccato, 
+  * la pagina giusta.
+  */
   public function load(){
     if(isset($_POST['listComponents'])){
 		header('Location: '.URL."ListComponents");
@@ -24,3 +28,5 @@ class Home extends Controller
 	}
   }
 }
+
+?>

@@ -13,7 +13,7 @@
 					</td>
 					<td>
 						<input type="text" name="marca" autocomplete="off" 
-						value="">
+						value="<?php echo $this->marca ?>">
 					</td>
 				</tr>
 				<tr>
@@ -22,7 +22,7 @@
 					</td>
 					<td>
 						<input type="text" name="desc" autocomplete="off" 
-						value=""
+						value="<?php echo $this->desc ?>"
 						style="width:300px; height:60px">
 					</td>
 				</tr>
@@ -32,7 +32,7 @@
 					</td>
 					<td>
 						<input type="text" name="nSeriale" autocomplete="off" 
-						value="">
+						value="<?php echo $this->nSeriale ?>">
 					</td>
 				</tr>
 				<tr>
@@ -41,7 +41,7 @@
 					</td>
 					<td>
 						<input type="number" name="aula" onkeypress="preventNonNumericalInput(event, this.value)"
-						value="">
+						value="<?php echo $this->aula ?>">
 					</td>
 				</tr>
                 <tr>

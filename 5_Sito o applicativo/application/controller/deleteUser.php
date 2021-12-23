@@ -32,11 +32,12 @@ class DeleteUser extends Controller
       if($_SERVER["REQUEST_METHOD"] == "POST"){
         $user = new DeleteUserClass($_POST["email"], 
               $_POST["confEmail"]);
-        if($user->deleteUser()){
-          $this->view->render('Home/index.php');
-        }
+        $user->deleteUser();
+        $this->writeLog("(DeleteUser) User deleted");
+        $this->view->render('Home/index.php');
       }
     }catch(Exception $e){ 
+      $this->writeErrorLog("(DeleteUser) User not deleted");
       $this->index($e->getMessage());
     }
   }

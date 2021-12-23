@@ -12,6 +12,16 @@
 		private $hashedPassword;
 		private $isAdmin;
 
+		/**
+		 * Costruttore, tutti i parametri non devono essere vuoti 
+		 * 
+		 * @param String $name -> nome utente
+		 * @param String $surname -> cognome utente
+		 * @param String $email -> email utente
+		 * @param String $password -> password utente
+		 * @param String $confPass -> conferma password
+		 * @param Int $isAdmin -> se utente è admin oppure no
+		 */
 		public function __construct($name, $surname, $email, $password, $confPass, $isAdmin)
 		{
 			if(!empty($name) && !empty($surname) && !empty($email) 
@@ -27,6 +37,9 @@
 			}
 		}
 
+		/**
+		 * Metodo che calcola l'hash in sha256 della password con salt l'email
+		 */
 		public function getHashedPass(){
 			require 'application/libs/hash.php';
 			$hashUser = new Hash($this->password);
@@ -34,6 +47,9 @@
 			$this->hashedPassword = $hashUser->getHashed();
 		}
 
+		/**
+		 * Metodo che crea l'utente, dopo i vari controlli sull'email e password
+		 */
 		public function createUser(){
 			require 'application/libs/connection.php';
 			require 'application/libs/Register/email.php';

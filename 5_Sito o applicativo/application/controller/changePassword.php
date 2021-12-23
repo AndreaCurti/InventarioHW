@@ -32,10 +32,12 @@ class ChangePassword extends Controller
         $user = new ChangePasswordClass($_POST["email"], $_POST["oldPassword"], 
                 $_POST["newPass"], $_POST["confPass"]);
         if($user->changePassword()){
+          $this->writeLog("(ChangePassword) Password changed");
           $this->view->render('Home/index.php');
         }
       }
     }catch(Exception $e){ 
+      $this->writeErrorLog("(ChangePassword) Password not changed");
       $this->index($e->getMessage());
     }
   }

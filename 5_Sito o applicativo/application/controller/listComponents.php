@@ -61,6 +61,7 @@ class ListComponents extends Controller
     require_once 'application/models/component_model.php';
     $component = new Component($id);
     if($component->delete()){
+      $this->writeLog("(ListComponents) Component deleted");
       $this->index($idCategoria);
     }
   }

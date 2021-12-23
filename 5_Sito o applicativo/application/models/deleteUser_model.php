@@ -32,7 +32,10 @@
                 if ($result->num_rows > 0) {
                     $sql = "UPDATE utente SET is_enable = FALSE WHERE email='$this->email' AND is_enable=1";
                     $conn->query($sql);
-                    return true;
+                    if(mysqli_affected_rows($conn) > 0 ){
+                        return TRUE;
+                    }
+                    throw new Exception("Utente non trovato");
                 }else{ 
                     throw new Exception("Utente non esistente");
                 }

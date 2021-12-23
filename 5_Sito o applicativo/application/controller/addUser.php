@@ -32,10 +32,11 @@ class AddUser extends Controller
                     $_POST["cognome"], $_POST["email"], 
                     $_POST["password"], $_POST["confPassword"], 
                     isset($_POST["isAdmin"]) ? 1 : 0);
-            if($user->createUser()){
-                $this->view->render('Home/index.php');
-            }            
+            $user->createUser();
+            $this->writeLog("(AddUser) New user added");
+            $this->view->render('Home/index.php');    
         }catch(Exception $e){ 
+            $this->writeErrorLog("(AddUser) Error while adding user");
             $this->index($e->getMessage());
         }
     }

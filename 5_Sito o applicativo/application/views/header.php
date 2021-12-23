@@ -17,17 +17,8 @@
         <div >
             <div id="header">
                 <?php if(!empty($_SESSION['id'])){ ?>
-                    <?php if($_SESSION['isAdmin'] == 0){ ?>
-                        <a style="margin-right: 20px" href="<?php echo URL; ?>Home/index">Home</a>   
-                        <a style="margin-right: 20px" href="<?php echo URL; ?>Login/index">Logout</a>
-                    <?php }else if($_SESSION['isAdmin'] == 1){ ?>
-                        <a style="margin-right: 20px" href="<?php echo URL; ?>Home/index">Home</a>   
-                        <a style="margin-right: 20px" href="<?php echo URL; ?>AddUser/index">Aggiungi utente</a>
-                        <a style="margin-right: 20px" href="<?php echo URL; ?>DeleteUser/index">Rimuovi utente</a>
-                        <a style="margin-right: 20px" href="<?php echo URL; ?>ChangeEmail/index">Cambia email</a>
-                        <a style="margin-right: 20px" href="<?php echo URL; ?>ChangePassword/index">Cambia password</a>
-                        <a style="margin-right: 20px" href="<?php echo URL; ?>Login/index">Logout</a>
-                    <?php } ?>
+                    <a style="margin-right: 20px" href="<?php echo URL; ?>Home/index"><i class="bi bi-house-door-fill fa-lg" style="font-size: 25px"></i></a>   
+                    <a class="float-right" href="<?php echo URL; ?>Login/index"><i class="bi bi-box-arrow-right" style="font-size: 25px"></i></a>
                 <?php }else{ ?>
                     <a style="margin-right: 20px" href="<?php echo URL; ?>Login/index">Login</a>
                 <?php } ?>  

@@ -1,14 +1,17 @@
 <form action="<?php echo URL ?>home/load" method="POST">
-<table>
+<table style="margin: auto; margin-right:auto; margin-top:3em;">
     <tr>
-        <td>
-            <input type="submit" class="btn btn-dark btn-lg" name="listComponents" value="Consulta inventario">
-        </td>
-        <?php if($_SESSION['isAdmin'] == 1){ ?>
+        <div>
             <td>
-                <input type="submit" class="btn btn-dark btn-lg" name="users" value="Gestione utenti">
+                <input type="submit" class="btn btn-dark btn-lg" style="height: 5em" name="listComponents" value="Consulta inventario">
             </td>
-        <?php } ?>
+            <td></td>
+            <?php if($_SESSION['isAdmin'] == 1){ ?>
+                <td>
+                    <input type="submit" class="btn btn-dark btn-lg" style="height: 5em;" name="users" value="Gestione utenti">
+                </td>
+            <?php } ?>
+        </div>
     </tr>
 </table>
 </form>

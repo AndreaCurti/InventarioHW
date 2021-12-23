@@ -1,5 +1,5 @@
-
-<div id="footer" class="bg-dark">@Andrea Curti</div>
-
+<div>
+    <div id="footer" class="fixed-bottom bg-dark justify-content-center"><h5>@Andrea Curti</h5></div>
+</div>
 </body>
 </html>
